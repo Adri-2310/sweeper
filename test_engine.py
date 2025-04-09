@@ -11,6 +11,15 @@ def empty_field():
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
     ]
+@pytest.fixture
+def full_field():
+    return [
+        [0, 1, 1, 2, 1],
+        [0, 1, 9, 2, 9],
+        [1, 1, 1, 3, 2],
+        [9, 2, 2, 9, 1],
+        [1, 2, 9, 2, 1],
+    ]
 
 def test_init_minimal_minefield():
     result = [
@@ -77,3 +86,7 @@ def test_place_wrong_width(empty_field):
 def test_place_mine_avoid_position(empty_field):
     engine.place_mine(empty_field, 8, (4, 2))
     assert empty_field[4][2] !=9
+
+def test_reveal_cell(full_field):
+    pos= (3,4)
+    assert engine.reveal_cell(full_field,pos) ==1

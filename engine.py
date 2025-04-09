@@ -42,5 +42,8 @@ def place_mine(empty_field:list[list[int]], nbr_mines: int, position_init=(21, 2
 
     return empty_field
 
+def reveal_cell(field:list[list[int]], position:tuple) -> int:
+    pass
+
 
 
