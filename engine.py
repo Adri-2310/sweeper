@@ -15,7 +15,7 @@ def init_minefield(width: int, height: int) -> list:
 
     return [[0 for _ in range(width)] for _ in range(height)]
 
-def place_mine(empty_field, nbr_mines: int) -> list:
+def place_mine(empty_field:list[list[int]], nbr_mines: int) -> list:
     """
     Place un nombre spécifié de mines sur le champ.
 

@@ -2,6 +2,16 @@ import engine
 import pytest
 # Assurez-vous que le module engine est correctement importé
 # from engine import init_minefield, place_mine
+@pytest.fixture
+def empty_field():
+    return [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+    ]
+
 
 def test_init_minimal_minefield():
     result = [
@@ -57,5 +67,5 @@ def test_init_minefield_wrong_height():
 
 def test_place_min_mine(empty_field):
     engine.place_mine(empty_field, 5)
-    count_mines = sum(row.count(1) for row in empty_field)
+    count_mines = sum(row.count(9) for row in empty_field)
     assert count_mines == 5
