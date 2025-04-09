@@ -12,7 +12,6 @@ def empty_field():
         [0, 0, 0, 0, 0],
     ]
 
-
 def test_init_minimal_minefield():
     result = [
         [0, 0, 0, 0, 0],
@@ -69,3 +68,12 @@ def test_place_min_mine(empty_field):
     engine.place_mine(empty_field, 5)
     count_mines = sum(row.count(9) for row in empty_field)
     assert count_mines == 5
+
+def test_place_wrong_width(empty_field):
+    with pytest.raises(ValueError):
+        engine.place_mine(empty_field, 100)
+
+@pytest.mark.loop(100)
+def test_place_mine_avoid_position(empty_field):
+    engine.place_mine(empty_field, 8, (4, 2))
+    assert empty_field[4][2] !=9
